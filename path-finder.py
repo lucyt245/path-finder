@@ -49,15 +49,15 @@ def path_find(maze, stdscr):
     start_point = start_find(maze, start)
 
     q = queue.Queue() # define first-in, first-out data structure
-    q.put((start_point, [start_point]))
+    q.put(([start_point]))
 
     visited = set()
 
     while not q.empty():
-        current_point, path = q.get()
-        row, col = current_point
+        path = q.get()
+        row, col = path[-1]
 
-        stdscr.clear()
+        # stdscr.clear()
         maze_print(maze, stdscr, path)
         time.sleep(0.3)
         stdscr.refresh()
@@ -74,8 +74,9 @@ def path_find(maze, stdscr):
             if maze[r][c] == '|':
                 continue
 
+            print(neighbour)
             new_path = path + [neighbour] # adds neighbour to path
-            q.put((neighbour, new_path))
+            q.put((new_path))
             visited.add(neighbour) # adds neighbour as a destination the path finder has already been
 
 
