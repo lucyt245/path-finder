@@ -57,7 +57,7 @@ def path_find(maze, stdscr):
         path = q.get()
         row, col = path[-1]
 
-        # stdscr.clear()
+        stdscr.clear()
         maze_print(maze, stdscr, path)
         time.sleep(0.3)
         stdscr.refresh()
